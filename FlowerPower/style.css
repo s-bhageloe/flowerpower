@@ -1,0 +1,139 @@
+body {
+  font-family: arial;
+  background-image: url('bloemenwinkel2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+}
+
+.verticalbar {
+  height: 100%;
+  width: 225px;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background-color: #359226;
+  padding-top: 20px;
+  border-right: 5px solid;
+}
+
+.verticalbar a {
+  font-family: cursive;
+  padding: 5px 0px 5px 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+}
+
+.verticalbar a:hover {
+  color: #818181;
+}
+
+.body {
+  margin-left: 225px;
+  font-size: 28px;
+  padding: 0px 10px;
+}
+
+.body h2 {
+  text-align: center;
+  border-radius: 25px;
+  font-family: cursive;
+  display: flex; justify-content: center;
+  color: #FFFFFF;
+  margin-right: 500px;
+   text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.body h4 {
+  margin-left: -200px;
+  font-size: 28px;
+  padding: 50px 0px;
+   color: #FFFFFF;
+  margin-right: 500px;
+   text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+#horizontal {
+  position: fixed;
+  background-color: #359226;
+  z-index: 0;
+  top: 0px;
+  height: 150px;
+  width: 100%;
+  margin-left: 217.5px;
+  border-bottom: 5px solid black;
+}
+
+input[type=text], input[type=password] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+p {  
+  border-radius: 25px;
+  font-family: cursive;
+  color: #FFFFFF;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.box {
+  background:white;
+  width:300px;
+  margin: 0 auto 0 auto;
+  padding:0px 0px 70px 0px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+}
+
+.box-content {
+  position: relative;
+  left: 50%;
+  transform: translate(-25%);
+}
+
+.box h2 {
+  text-align: center;
+   border-radius: 25px;
+  font-family: cursive;
+  color: #FFFFFF;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
