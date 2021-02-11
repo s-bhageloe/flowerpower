@@ -51,4 +51,49 @@ class database {
 
     
 
+
+
+function loginmedewerker($username, $pwd){
+        $sql="SELECT * FROM medewerker WHERE gebruikersnaam = :uname";
+
+        $stmt = $this->dbh->prepare($sql); 
+        $stmt->execute(['uname'=>$username]); 
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        if($result){
+            if(password_verify($pwd, $result["wachtwoord"])) {
+                echo "Valid Password!";
+                header("location:");
+            } else {
+                echo "Invalid Password!";
+            }
+        } else {
+            echo "Invalid Login";
+        }
+
+    }
+
+ function loginklant($username, $pwd){
+        $sql="SELECT * FROM klant WHERE gebruikersnaam = :uname";
+
+        $stmt = $this->dbh->prepare($sql); 
+        $stmt->execute(['uname'=>$username]); 
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        if($result){
+            if(password_verify($pwd, $result["wachtwoord"])) {
+                echo "Valid Password!";
+                header("Location:");
+            } else {
+                echo "Invalid Password!";
+            }
+        } else {
+            echo "Invalid Login";
+        }
+
+    }
+
 }
+
+
+?>

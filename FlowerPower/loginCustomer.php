@@ -1,10 +1,11 @@
 <?php
 include 'database.php';
-$obj = new database();
-$obj->insertCustomerUser('sameer', 'yes');
+//$obj = new database();
+//$obj->loginklant('sameer', 'yes');
 
 
-
+//$_POST = ['username'=>'sabeer', 'password'=>'bameer']; 
+$msg = '';
 if(isset($_POST['submit'])){
 
     $fieldnames = ['username', 'password'];
@@ -13,16 +14,20 @@ if(isset($_POST['submit'])){
     foreach($fieldnames as $fieldname){
         if(!isset($_POST[$fieldname]) || empty($_POST[$fieldname])){
             $error = true; 
+            $msg = 'error';
         }
 
     }
 
     if(!$error){
+        $obj = new database();
+        $obj->loginCustomer($_POST['username'], $_POST['password']);
         
     }else{
         
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +42,14 @@ if(isset($_POST['submit'])){
 	<div class="box">
 		<h2>Inloggen klanten</h2>
 		<div class="box-content">
-    		<form method="post" action="index.php">
+    		<form method="post" action="klant.php">
     			<p> Username </p>
-       		<input type="text" title="username" placeholder="Username" /><br>
+       		<input type="text" name="username" placeholder="Username" /><br>
         		<p> Password </p>
-        	<input type="password" title="password" placeholder="Password" /><br><br>
+        	<input type="password" name="password" placeholder="Password" /><br><br>
         	<button type="submit" class="btn">Login</button><br>
     		</form>
 		</div>
 	</div>
 </body>
+</html>
