@@ -1,3 +1,11 @@
+<?php
+
+include_once ("database2.php");
+
+$artikelen = $conn->query("SELECT * FROM artikel ORDER BY artikelcode DESC"); 
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,42 +32,26 @@ tr:nth-child(even) {
 <h2></h2>
 
 <table>
+  <thead>
   <tr>
-    <th>Artikelcode</th>
-    <th>Artikelen</th>
-    <th>Prijs</th>
+    <th scope="col">Artikelcode</th>
+    <th scope="col">Artikelen</th>
+    <th scope="col">Prijs</th>
+    <th></th>
   </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-  </tr>
-</table>
+</thead>
+<tbody>
+  <?php 
+  while($info = $artikelen->fetch(PDO::FETCH_ASSOC)){ 
+      echo "<tr>";
+      echo "<td>".$info['artikelcode']."</td>";
+      echo "<td>".$info['artikel']."</td>";
+      echo "<td>".$info['prijs']."</td>";
+      echo"<td><a href=\"delete_artikelen.php?id=$info[artikelcode]\" class='btn btn-warning'>Edit</a> | <a href=\"delete_artikelen.php?id=$info[artikelcode]\" onClick=\"return confirm('Weet je zeker dat je wilt verwijderen?')\"class='btn btn-danger'>Delete</a></td>";
+    } 
+   ?> 
+</tbody>
+ </table>
 
 </body>
 </html>

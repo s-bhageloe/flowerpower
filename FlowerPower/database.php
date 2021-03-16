@@ -17,14 +17,16 @@ class database {
         try{
             $dsn = "mysql:host=$this->host;dbname=$this->db";
             $this->dbh = new PDO($dsn, $this->user, $this->pass);
+            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            return $this->dbh;
         }catch(PDOException $e){
             die("Unable to connect: " . $e->getMessage());
 
         }
     }
 
-        function insertCustomerUser($username, $password){
-            $sql = "INSERT INTO klant(klantcode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
+    function insertCustomerUser($username, $password){
+        $sql = "INSERT INTO klant(klantcode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
 
             $stmt = $this->dbh->prepare($sql);
             $stmt->execute([
@@ -36,8 +38,8 @@ class database {
             
         }
 
-        function insertEmployeeUser($username, $password){
-            $sql = "INSERT INTO medewerker(medewerkerscode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
+    function insertEmployeeUser($username, $password){
+        $sql = "INSERT INTO medewerker(medewerkerscode, gebruikersnaam, wachtwoord) VALUES (:id, :username, :password)"; 
 
             $stmt = $this->dbh->prepare($sql);
             $stmt->execute([
@@ -53,7 +55,7 @@ class database {
 
 
 
-function loginmedewerker($username, $pwd){
+    function loginmedewerker($username, $pwd){
         $sql="SELECT * FROM medewerker WHERE gebruikersnaam = :uname";
 
         $stmt = $this->dbh->prepare($sql); 
@@ -73,7 +75,7 @@ function loginmedewerker($username, $pwd){
 
     }
 
- function loginklant($username, $pwd){
+    function loginklant($username, $pwd){
         $sql="SELECT * FROM klant WHERE gebruikersnaam = :uname";
 
         $stmt = $this->dbh->prepare($sql); 
@@ -91,6 +93,27 @@ function loginmedewerker($username, $pwd){
             echo "Invalid Login";
         }
 
+    }
+
+    function select($sql, $placeholders){
+
+        $stmt = $this->dbh->prepare($sql); 
+        $stmt->execute(placeholders); 
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
+
+    public function delete($sql, $placeholders, $file){
+
+        $stmt = $this->dbh->prepare($sql);
+
+        // $sql = 'SELECT * FROM medewerkers WHERE username=:uname';
+
+        $stmt->execute($placeholders);
+        header('location: '.$file);
+        exit;
     }
 
 }
